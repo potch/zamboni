@@ -101,6 +101,7 @@ AMO_LANGUAGES = (
     'nl', 'pl', 'pt-BR', 'pt-PT', 'ro', 'ru', 'sk', 'sl', 'sq', 'sv-SE',
     'tr', 'uk', 'vi', 'zh-CN', 'zh-TW',
 )
+HIDDEN_LANGUAGES = ('cy', 'sr', 'sr-Latn', 'tr')
 
 
 def lazy_langs():
@@ -337,6 +338,7 @@ INSTALLED_APPS = (
     'files',
     'jingo_minify',
     'market',
+    'localizers',
     'pages',
     'perf',
     'product_details',
