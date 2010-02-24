@@ -514,6 +514,11 @@ MINIFY_BUNDLES = {
             'css/zamboni/admin-mozilla.css',
             'css/zamboni/admin_features.css'
         ),
+        # CSS for developer/editor/localizer pages
+        'developers': (
+            'css/developers.css',
+            'css/localizers.css',
+        ),
     },
     'js': {
         # JS files common to the entire site.
@@ -752,6 +757,10 @@ MINIFY_BUNDLES = {
             'js/debug/less_setup.js',
             'js/lib/less-1.1.4.js',
             'js/debug/less_live.js',
+        ),
+        # JS for developer/editor/localizer pages
+        'developers': (
+            '/js/zamboni/localizers.js',
         ),
     }
 }
