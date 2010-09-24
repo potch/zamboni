@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% set c = collection %}
+
+{% block title %}{{ page_title(_('{0} :: Collections')|f(c.name)) }}{% endblock %}
+
+{% block bodyclass %}inverse{% endblock %}
+
+{% block rss_feed %}
+<link rel="alternate" type="application/rss+xml" title="RSS"
+      href="{{ url('collections.detail.rss', c.author_username, c.slug) }}">
+{% endblock %}
+
+{% block content %}
+  {% with crumbs = [(url('collections.list'), _('Collections')), (None, c.name)] %}
+    {% if c.author %}
+      {% do crumbs.insert(1, (url('collections.user', c.author.username), c.author.name)) %}
+    {% endif %}
+    {{ breadcrumbs(crumbs) }}
+  {% endwith %}
+  <hgroup>
+    <h2 class="collection">
+      <img src="{{ c.icon_url }}" class="icon">
+      <span>{{ _('Install Add-ons from {0}')|f(c.name) }}</span>
+      {% if not c.listed %}
+        <span class="private">{{ _('private') }}</span>
+      {% endif %}
+    </h2>
+  </hgroup>
+<div class="primary">
+  {% include "messages.html" %}
+
+{% cache addons.object_list %}
+  <div class="separated-listing">
+    <h3>
+      {% trans num=addons.paginator.count %}
+        {{ num }} Add-on in this Collection
+      {% pluralize %}
+        {{ num }} Add-ons in this Collection
+      {% endtrans %}
+    </h3>
+    <form class="item-sort go" action="">
+      <label for="sortby">{{ _('Sort by:') }}</label>
+      <select id="sortby" name="{{ filter.key }}">
+        {% for value, title in filter.opts %}
+        <option value="{{ value }}" {{ value|ifeq(filter.field, 'selected') }}>
+          {{ title }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit">{{ _('Go') }}</button>
+    </form>
+    {{ addon_listing_items(addons.object_list, notes=notes.next(), src="collection") }}
+  </div>
+{% endcache %}
+</div> {# primary #}
+
+<div class="secondary">
+<div class="highlight">
+  <h3>{{ _('0 Add-ons Selected') }}</h3>
+</div>
+
+</div> {# secondary #}
+
+{% endblock %}

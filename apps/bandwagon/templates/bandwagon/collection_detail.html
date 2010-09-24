@@ -39,6 +39,10 @@
 <div class="featured">
   <div class="featured-inner object-lead">
     <div class="meta">
+      <p>
+        {{ _('Want to try them together?') }}
+        <a href="{{ url('collections.install_multiple', c.author_username, c.slug) }}">{{ _('Install Multiple Add-ons') }}</a>
+      </p>
       <ul>
         {% if c.listed %}
           <li>{{ barometer(collection) }}</li>

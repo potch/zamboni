@@ -372,6 +372,7 @@ MINIFY_BUNDLES = {
             'js/amo2009/addons.js',
             'js/zamboni/init.js',
             'js/zamboni/buttons.js',
+            'js/zamboni/buttons2.js',
             'js/zamboni/search.js',
             'js/zamboni/tabs.js',
 

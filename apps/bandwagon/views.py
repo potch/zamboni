@@ -539,3 +539,33 @@ def following(request):
     return render(request, 'bandwagon/user_listing.html',
                   dict(collections=collections, votes=votes,
                        page='following', filter=get_filter(request)))
+
+
+def install_multiple(request, username, slug):
+    c = get_collection(request, username, slug)
+    if not (c.listed or acl.check_collection_ownership(request, c)):
+        return http.HttpResponseForbidden()
+
+    if request.GET.get('format') == 'rss':
+        return redirect(c.feed_url(), permanent=True)
+
+    base = Addon.objects.valid() & c.addons.all()
+    filter = CollectionAddonFilter(request, base,
+                                   key='sort', default='popular')
+    notes = get_notes(c)
+    # Go directly to CollectionAddon for the count to avoid joins.
+    count = CollectionAddon.objects.filter(
+        Addon.objects.valid_q(amo.VALID_STATUSES, prefix='addon__'),
+        collection=c.id)
+    addons = amo.utils.paginate(request, filter.qs, per_page=15,
+                                count=count.count())
+
+    # The add-on query is not related to the collection, so we need to manually
+    # hook them up for invalidation.  Bonus: count invalidation.
+    keys = [addons.object_list.flush_key(),
+            count.flush_key()]
+    caching.invalidator.add_to_flush_list({c.flush_key(): keys})
+
+    return render(request, 'bandwagon/install_multiple.html',
+                  {'collection': c, 'filter': filter, 'addons': addons,
+                   'notes': notes})
