@@ -515,6 +515,12 @@ html[lang=it] #nav-main a {
     padding: 123px 0 5px 0;
 }
 
+#footer.fixed {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
 #footer-logo a,
 #footer-logo a:link,
 #footer-logo a:visited {

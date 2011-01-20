@@ -58,6 +58,18 @@ function _pd(func) {
     };
 }
 
+$(function () {
+    var $window = $(window),
+        doc = $("body")[0],
+        $footer = $("#footer"),
+        hgt = doc.scrollHeight;
+    function adjustFooter() {
+        $footer.toggleClass("fixed", ($window.height() > hgt));
+    }
+    $window.resize(adjustFooter);
+    adjustFooter();
+});
+
 /* Fake the placeholder attribute since Firefox 3.6 doesn't support it. */
 jQuery.fn.placeholder = function(new_value) {
 
