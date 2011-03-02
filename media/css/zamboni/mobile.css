@@ -113,38 +113,17 @@ a:link {
 /* 'Mozilla' */
 .moz-menu .tab {
     background: #33589f;
-    background: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        from(rgb(42,65,135)),
-        to(rgb(59,105,177))
-    );
-    background: -moz-linear-gradient(
-        center bottom,
-        rgb(42,65,135) 0%,
-        rgb(59,105,177) 100%
-    );
-    background: linear-gradient(
-        center bottom,
-        rgb(42,65,135) 0%,
-        rgb(59,105,177) 100%
-    );
 }
 
 footer:before,
 .tabs {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAEElEQVQIHWP8//8/Aw7wHwBR6AP+G53o6QAAAABJRU5ErkJggg=='),
-                      -moz-linear-gradient(#fff, #dcedfd);
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAEElEQVQIHWP8//8/Aw7wHwBR6AP+G53o6QAAAABJRU5ErkJggg=='),
-                      -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcedfd));
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAEElEQVQIHWP8//8/Aw7wHwBR6AP+G53o6QAAAABJRU5ErkJggg==');
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAEElEQVQIHWP8//8/Aw7wHwBR6AP+G53o6QAAAABJRU5ErkJggg==');
 }
 
 html {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAEElEQVQIHWP8//8/Aw7wHwBR6AP+G53o6QAAAABJRU5ErkJggg=='),
-                      -moz-linear-gradient(#dcedfd 0, #fff 200px);
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAEElEQVQIHWP8//8/Aw7wHwBR6AP+G53o6QAAAABJRU5ErkJggg=='),
-                      -webkit-gradient(linear, left top, left 200, from(#dcedfd), to(#fff));
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAEElEQVQIHWP8//8/Aw7wHwBR6AP+G53o6QAAAABJRU5ErkJggg==');
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAEElEQVQIHWP8//8/Aw7wHwBR6AP+G53o6QAAAABJRU5ErkJggg==');
 
 }
 
@@ -212,7 +191,6 @@ table th {
 #eula h2 {
     padding-bottom: 4px;
     border-bottom: 1px solid #ccc;
-    box-shadow: 0 1px #fff;
 }
 
 .paginator {
@@ -254,12 +232,6 @@ table th {
     z-index: 100;
 }
 .moz-menu .tab {
-    border-radius: 0 0 6px 6px;
-    -moz-border-radius: 0 0 6px 6px;
-    -webkit-border-radius: 0 0 6px 6px;
-    box-shadow: 0 -3px rgba(0,0,0,.2) inset;
-    -moz-box-shadow: 0 -3px rgba(0,0,0,.2) inset;
-    -webkit-box-shadow: 0 -3px rgba(0,0,0,.2) inset;
 }
 .moz-menu .tab a {
     background: url(../../img/zamboni/global/wordmark.png) no-repeat 8px 6px;
@@ -284,11 +256,10 @@ table th {
 .moz-menu .menu-items li {
     border-bottom: 1px solid #294976;
     border-top: 1px solid #537ab4;
-    background-image: -moz-linear-gradient(#3a67af, #385eaa);
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#3a67af), to(#385eaa));
     height: 50px;
     width: 100%;
     padding: 0 14px;
+    background: #33589f;
 }
 .moz-menu .menu-items a {
     font-family: "Trebuchet MS", "Droid Sans", sans-serif;
@@ -384,6 +355,7 @@ header #home, header .back-link {
     margin: 0;
 }
 #learnmore-msg {
+    display: none;
     position: absolute;
     left: 0;
     margin: 12px 14px 0;
@@ -394,20 +366,10 @@ header #home, header .back-link {
     font-size: 14px;
     padding: 14px;
     z-index: 100;
-    -moz-border-radius: 1em;
-    -webkit-border-radius: 1em;
-    border-radius: 1em;
     background: #444;
-    opacity: 0;
     pointer-events: none;
-    -moz-transition: .3s opacity ease;
-    -webkit-transition: .3s opacity ease;
-    box-shadow: 0 0 3px #000;
-    -moz-box-shadow: 0 0 3px #000;
-    -webkit-box-shadow: 0 0 3px #000;
 }
 #learnmore-msg.show {
-    opacity: 1;
     pointer-events: auto;
 }
 #learnmore {
@@ -434,14 +396,8 @@ header #home, header .back-link {
 .listview,
 .infobox {
     margin: 14px 14px 0;
-    border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
     border: 1px solid #ddd;
     background-color: #f4f4f4;
-    background-image: -moz-linear-gradient(#fff, rgba(255,255,255,0) 12px);
-    -moz-box-shadow: 0 -3px rgba(0,0,0,.1) inset;
-    -webkit-box-shadow: 0 -3px rgba(0,0,0,.1) inset;
     margin-bottom: 1em;
     display: block;
 }
@@ -520,9 +476,6 @@ a.listview:before {
     height: 41px;
     padding-left: 40px;
     border: 1px solid #ddd;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
     margin: -1px 8px 0 0;
     font-size: 18px;
 }
@@ -531,14 +484,7 @@ a.listview:before {
     margin: 0;
     height: 45px;
     width: 56px;
-    background-image: -moz-linear-gradient(#83c53c, #4f9c19);
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#83c53c), to(#4f9c19));
     border: 0;
-    -webkit-box-shadow: 0 -3px rgba(0,0,0,.1) inset;
-    -moz-box-shadow: 0 -3px rgba(0,0,0,.1) inset;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
 }
 
 /************************************/
@@ -592,9 +538,6 @@ a.listview:before {
     white-space: nowrap;
     border: 1px solid transparent;
     border-width: 1px 1px 0 1px;
-    border-radius: 6px 6px 0 0;
-    -moz-border-radius: 6px 6px 0 0;
-    -webkit-border-radius: 6px 6px 0 0;
     margin-left: 4px;
     padding: 11px 22px 11px 6px;
     -moz-transition: .3s background ease;
@@ -603,7 +546,6 @@ a.listview:before {
     background: white;
     border-color: #a9badb;
     border-bottom: 1px solid white;
-    box-shadow: 0 -1px 1px #dde4ef;
 }
 /* menu arrow */
 #sort-menu .label span:after {
@@ -627,7 +569,6 @@ a.listview:before {
     height: 41px;
     font: 16px Georgia, serif;
     padding: 14px 14px 0;
-    box-shadow: 0 -1px 1px rgba(0,0,0,.1) inset;
 }
 .tabs ul {
     display: -webkit-box;
@@ -657,12 +598,8 @@ a.listview:before {
 }
 .tabs ul li.selected {
     background: white;
-    box-shadow: 0 -1px 1px rgba(0,0,0,.1);
     border: 1px solid #a2bbdc;
     border-width: 1px 1px 0 1px;
-    border-radius: 6px 6px 0 0;
-    -moz-border-radius: 6px 6px 0 0;
-    -webkit-border-radius: 6px 6px 0 0;
 }
 .tabs ul li.selected a {
     color: #444;
@@ -697,7 +634,6 @@ a.listview:before {
 /************************************/
 
 #lightbox {
-    background: rgba(0,0,0,.9);
     position: absolute;
     width: 100%;
     height: 101%;
@@ -705,11 +641,8 @@ a.listview:before {
     z-index: 9000;
     color: white;
     text-align: center;
-    opacity: 0;
     overflow: hidden;
     pointer-events: none;
-    -moz-transition: .5s opacity ease;
-    -webkit-transition: .5s opacity ease;
 }
 #lightbox .close {
     font-family: sans;
@@ -722,9 +655,6 @@ a.listview:before {
     right: 14px;
     line-height: 12px;
     text-align: center;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
     width: 12px;
     height: 12px;
     padding: 12px;
@@ -733,7 +663,6 @@ a.listview:before {
 
 #lightbox.show {
     pointer-events: auto;
-    opacity: 1;
 }
 #lightbox section {
     position: relative;
@@ -766,9 +695,6 @@ a.listview:before {
 #lightbox img {
     max-width: 95%;
     max-height: 100%;
-    -moz-transition: .5s opacity ease;
-    -webkit-transition: .5s opacity ease;
-    opacity: 0;
     position: absolute;
 }
 
@@ -827,9 +753,6 @@ td .versions li a {
 /************************************/
 
 .message {
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
     margin: 14px;
     padding: 14px;
 }
@@ -854,25 +777,9 @@ td .versions li a {
 
 .infobox .install-wrapper {
     border-top: 2px solid #fff;
-    box-shadow: 0 -1px #ccc;
 }
 
 .button, a.button {
-    -moz-transition: -moz-box-shadow 0.3s ease 0s;
-    background-image: -moz-linear-gradient(#669BE1, #5784BF) repeat scroll 0 0 transparent;
-    background-image: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        from(#669BE1),
-        to(#5784BF)
-    );
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    box-shadow: 0 3px rgba(0, 0, 0, 0.1), 0 -4px rgba(0, 0, 0, 0.1) inset;
-    -moz-box-shadow: 0 3px rgba(0, 0, 0, 0.1), 0 -4px rgba(0, 0, 0, 0.1) inset;
-    -webkit-box-shadow: 0 3px rgba(0, 0, 0, 0.1), 0 -4px rgba(0, 0, 0, 0.1) inset;
     color: #FFFFFF;
     display: inline-block;
     font-family: "Droid Sans", "Trebuchet MS", sans-serif;
@@ -890,9 +797,6 @@ td .versions li a {
 .button:active,
 .button.selected {
     top: 2px;
-    -moz-box-shadow: 0 1px rgba(0, 0, 0, 0.1),
-                     0 -4px rgba(0, 0, 0, 0.1) inset,
-                     0 0 100px rgba(255, 255, 255, 0.2) inset;
 }
 
 .button.small {
@@ -900,50 +804,26 @@ td .versions li a {
     font-weight: normal;
     padding: 6px 12px;
     padding-bottom: 9px;
-    -moz-box-shadow: 0 2px rgba(0, 0, 0, 0.1),
-                     0 -3px rgba(0, 0, 0, 0.1) inset;
 }
 
 .button.small:hover,
 .button.small:focus,
 .button.small:active,
 .button.small.selected {
-    -moz-box-shadow: 0 2px rgba(0, 0, 0, 0.1),
-                     0 -3px rgba(0, 0, 0, 0.1) inset,
-                     0 0 100px rgba(255, 255, 255, 0.2) inset;
 }
 
 .button.small:active,
 .button.small.selected {
     top: 2px;
-    -moz-box-shadow: 0 0px rgba(0, 0, 0, 0.1),
-                     0 -3px rgba(0, 0, 0, 0.1) inset,
-                     0 0 100px rgba(255, 255, 255, 0.2) inset;
 }
 
 .button.affirmative,
 .button.add {
     background-color: #84C63C;
-    background-image: -moz-linear-gradient(#84C63C, #489615);
-    background-image: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        from(#84C63C),
-        to(#489615)
-    );
     color: #fff;
 }
 .button.negative {
     background-color: #84C63C;
-    background-image: -moz-linear-gradient(#b25951, #932b0d);
-    background-image: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        from(#b25951),
-        to(#932b0d)
-    );
     color: #fff;
 }
 .button.add {
@@ -964,24 +844,19 @@ td .versions li a {
   background-attachment: scroll, scroll;
   background-clip: border-box, border-box;
   background-color: transparent;
-  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)),
-                    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGlJREFUeNqc0cEJACEMRFFNARaw/RexFe1dG3AjCBJJYDL/kNtjDqn9lRLUnlrixjd5qVdo6WNQOhiXN05Jg7PyYEJuzMmFaRn+GZG6KrQMlxHpY1A6GJc3TkmDs/JgQm7MyYVpqf0CDABVcj3T2ITzOAAAAABJRU5ErkJggg==);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGlJREFUeNqc0cEJACEMRFFNARaw/RexFe1dG3AjCBJJYDL/kNtjDqn9lRLUnlrixjd5qVdo6WNQOhiXN05Jg7PyYEJuzMmFaRn+GZG6KrQMlxHpY1A6GJc3TkmDs/JgQm7MyYVpqf0CDABVcj3T2ITzOAAAAABJRU5ErkJggg==);
   background-origin: padding-box, padding-box;
   background-position: 0 0%, 0 0;
   background-repeat: repeat, repeat;
   background-size: auto auto, auto auto;
   color: #333333;
-  text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.5);
   top: 0;
 }
 .button.add.warning:before {
     background: url(../../img/zamboni/mobile/install.svg) no-repeat 0 -50px;
 }
 .button.disabled {
-    background: -moz-linear-gradient(#d1d4d7, #c1c5ca);
     color: #fff;
-    -moz-box-shadow: 0 3px rgba(0, 0, 0, 0.05),
-                     0 -4px rgba(0, 0, 0, 0.05) inset;
     top: 0;
 }
 .button.add.disabled:before {
@@ -999,9 +874,6 @@ td .versions li a {
 }
 .badges li {
     border: 1px solid #ddd;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
     margin-bottom: 8px;
     font-size: .8em;
     line-height: 20px;
@@ -1019,16 +891,12 @@ td .versions li a {
 .install .privacy-policy {
     display: block;
     margin-top: 12px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
     height: 27px;
     font-size: .9em;
     color: black;
     line-height: 25px;
     border: 1px solid #ccc;
     background-color: #e6e6e6;
-    background-image: -moz-linear-gradient(#e6e6e6, #d3d3d3);
 }
 
 /************************************/
@@ -1046,9 +914,6 @@ td .versions li a {
     display: none;
 }
 #eula-content {
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
     margin: 14px;
     padding: 14px 0 70px 0;
     background: #fff;
@@ -1088,18 +953,12 @@ td .versions li a {
     border-style: solid;
     pointer-events: none;
     border-color: transparent #333 #333;
-    -moz-border-radius: 14px;
-    -webkit-border-radius: 14px;
-    border-radius: 14px;
 }
 #eula-menu div {
     margin-bottom: 14px;
     overflow: hidden;
     position: relative;
     background: #fff;
-    -moz-border-radius: 0 0 6px 6px;
-    -webkit-border-radius: 0 0 6px 6px;
-    border-radius: 0 0 6px 6px;
 }
 #eula-menu .button {
     margin: 8px;
@@ -1232,7 +1091,6 @@ td .versions li a {
     display: block;
     position: absolute;
     top: 0;
-    opacity: .9;
     width: 45px;
     height: 95%;
     line-height: 100px;
@@ -1247,11 +1105,9 @@ td .versions li a {
     color: #ccc;
 }
 .carousel .control.prev {
-    background: -moz-linear-gradient(left, #fff 20%, rgba(255,255,255,0));
     left: 0;
 }
 .carousel .control.next {
-    background-image: -moz-linear-gradient(left, rgba(255,255,255,0), #fff 80%);
     right: 0;
 }
 
@@ -1259,7 +1115,6 @@ td .versions li a {
     position: relative;
     padding: 14px 40px;
     overflow: hidden;
-    background-image: -moz-linear-gradient(#fff 95%, #dcedfd);
     background-color: #fff;
     border-bottom: 2px solid #dcedfd;
     margin-bottom: 20px;
@@ -1284,9 +1139,6 @@ td .versions li a {
     border: 1px solid #afbed0;
     max-height: 75px;
     max-width: 100px;
-    border-radius: 6px;
-    -moz-box-shadow: 0 0 4px rgba(0,0,0,.2);
-    -webkit-box-shadow: 0 0 4px rgba(0,0,0,.2);
 }
 
 /************************************/
@@ -1334,7 +1186,6 @@ footer:before {
     left: 0;
     width: 100%;
     height: 30px;
-    box-shadow: 0 -2px rgba(0,0,0,.1) inset;
 }
 footer {
     font-family: "Droid Sans", sans-serif;
@@ -1344,13 +1195,11 @@ footer {
     padding: 14px;
     position: relative;
     min-height: 200px;
-    box-shadow: 0 2px rgba(0,0,0,.1) inset;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAFElEQVQIHWO0DZ3xnwELYOXgYwAAOHwCRjqu6SgAAAAASUVORK5CYII=');
 }
 footer select {
     margin-top: 4px;
     display: block;
-    border-radius: 6px;
     width: 100%;
     height: 30px;
 }
@@ -1363,9 +1212,6 @@ footer select {
 
 footer a.desktop-link {
     background: #5f92ce;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
     color: #fff;
     display: block;
     font-family: "Trebuchet MS", "Droid Sans", sans-serif;
