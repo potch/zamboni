@@ -82,6 +82,7 @@ class CollectionPromo(PromoModule):
     title = None
     subtitle = None
     limit = 3
+    linkify_title = False
 
     def __init__(self, *args, **kw):
         super(CollectionPromo, self).__init__(*args, **kw)
@@ -151,6 +152,7 @@ class Fx4Collection(CollectionPromo):
     cls = 'promo'
     title = _(u'Firefox 4 Collection')
     subtitle = _(u'Here are some great add-ons for Firefox 4.')
+    linkify_title = True
 
 
 class StPatricksPersonas(CollectionPromo):
