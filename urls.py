@@ -159,6 +159,8 @@ urlpatterns = patterns('',
     ('^recommended/format:rss$',
      lambda r: redirect('browse.featured.rss', permanent=True)),
 
+    #frank!
+    ('^frank/', include('frank.urls')),
 )
 
 urlpatterns += patterns('piston.authentication.oauth.views',

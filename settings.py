@@ -337,6 +337,7 @@ INSTALLED_APPS = (
     'editors',
     'extras',
     'files',
+    'frank',
     'jingo_minify',
     'market',
     'localizers',
