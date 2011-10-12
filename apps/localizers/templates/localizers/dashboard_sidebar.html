@@ -1,9 +1,9 @@
-<div id="l10n-motd" class="article prose">
+<section class="secondary" role="complementary">
+<div>
   {# L10n: Header to an info box in the sidebar #}
   <h3>{{ _('Good to know') }}</h3>
-  {{ localizers_sidebar_motd(lang=locale_code, show_edit=show_local_edit) }}
-  {{ localizers_sidebar_motd(lang='', show_edit=show_global_edit,
-                             extraclass='additional') }}
+  {{ localizers_sidebar_motd(lang=locale_code) }}
+  {{ localizers_sidebar_motd(lang='') }}
 </div>
 
 <div class="l10n_stats article">
@@ -16,7 +16,7 @@
         {{ stats['name'] }}
       </a>
       <div class="barometer" title="{{
-        _('{0} percent translated')|f(stats['percentage']|wround) }}">
+        _('{0} percent translated')|f(stats['percentage']|round) }}">
         <div class="bars">
           <div class="upbar" style="width:{{ stats['upwidth'] }}%">&nbsp;</div>
           <div class="downbar" style="width:{{ stats['downwidth'] }}%">&nbsp;</div>
@@ -27,7 +27,7 @@
 </div>
 
 {% if show_local_edit or show_global_edit %}
-<div class="l10n_needhelp article prose">
+<div>
   <h3>{{ _('Need Help?') }}</h3>
   <p>
     <a href="http://www.mozilla.org/community/developer-forums.html#dev-l10n-web">
@@ -45,22 +45,4 @@
   {% endif %}
 </div>
 {% endif %}
-
-{% if show_global_edit %}
-<div class="article">
-  <form method="post" action="{{
-    url('localizers.xenophobia', locale_code=locale_code) }}">
-    {{ csrf() }}
-    <input name="locale" type="hidden" value="{{ locale_code }}"/>
-    <input id="xenophobia" type="checkbox" name="xenophobia"{{
-      ' checked' if xenophobia }}/>
-    <label for="xenophobia">
-      {% trans %}
-      By default, show only add-ons with translations for this locale. This
-      affects all searches, listings, and browse pages for all users.
-      {% endtrans %}
-    </label>
-    <button type="submit">{{ _('Save') }}</button>
-  </form>
-</div>
-{% endif %}
+</section>

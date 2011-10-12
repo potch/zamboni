@@ -1,86 +1,44 @@
-{% extends "base.html" %}
-
-{% block extrahead %}
-  {{ css('developers') }}
-{% endblock %}
-
-{% block js %}
-  {{ js('developers') }}
-{% endblock %}
+{% extends "impala/base.html" %}
 
 {% block title %}{{ page_title(_('Localizer Dashboard')) }}{% endblock %}
 
-{% block bodyclass %}inverse l10n-dashboard{% endblock %}
+{# TODO XXX Not doing the trick! :( #}
+{% block bodyclass %}inverse{% endblock %}
 
-{% block main_content %}
-<h2>{{ _('Mozilla Add-ons Localization') }}</h2>
+{% block content %}
 
-<div id="localizers" class="primary feed-page" role="main">
-  <div class="featured" id="l10n_levels">
-    <div class="featured-inner">
-      <div class="listing-header">
-        <h3>{{ _('Overall Completeness for all Locales') }}</h3>
-      </div>
-      {% for level in stats.iterkeys(): %}
-        <div class="featured-inner level {{ level }}">
-          <span class="level_desc">{{ level_desc(level) }}</span>
-          <ul>
-            {% for locale in stats[level] %}
-            {% with hidden_options = ' class="disabled" title="{0}"'|f(_('This locale is hidden.')) %}
-              <li><a href="{{ url('localizers.locale_dashboard', locale) }}"
-                    {{ hidden_options|safe if locale in hidden_langs }}>
-                    {{ languages[locale]['native'] }}</a>
-              </li>
-              {% endwith %}
-            {% endfor %}
-          </ul>
-        </div>
+  {{ impala_breadcrumbs([(url('localizers.dashboard'), _('Localization Dashboard'))]) }}
+
+  <section class="secondary c" role="complementary">
+    {# L10n: Header to an info box in the sidebar #}
+    <h3>{{ _('Good to know') }}</h3>
+    {{ localizers_sidebar_motd(lang='') }}
+
+    <h3>{{ _('Want to help?') }}</h3>
+    <p>{{ _('AMO is available in so many languages because of people like '
+            'you helping out!') }}</p>
+    <ul>
+      <li><a href="https://wiki.mozilla.org/AMO:Localizers">{{ _('Get started with AMO L10n') }}</a></li>
+      {# L10n: %1$s is a URL #}
+      <li>{{ _('Want the bigger picture? Visit <a href="{0}">'
+               'localize.mozilla.org</a>.')|f('http://localize.mozilla.org')|safe }}</li>
+    </ul>
+  </section>
+
+  <section class="primary">
+    <h2>{{ _('Mozilla Add-ons Localization') }}</h2>
+      <ul>
+      {% for lang in amo_languages: %}
+        <li>
+          {% with hidden_options = ' class="disabled" title="{0}"'|f(_('This locale is hidden.')) %}
+          <a href="{{ url('localizers.locale_dashboard', lang) }}"
+                   {{ hidden_options|safe if locale in hidden_languages }}>
+            {{ languages[lang]['native'] }}
+          {% endwith %}
+          </a>
+        </li>
       {% endfor %}
-    </div>
-  </div>
+      </ul>
+  </section>
 
-  <div class="featured">
-    <div class="featured-inner">
-      <div class="listing-header">
-        <h3>{{ _('Recent Activity for all Locales') }}</h3>
-      </div>
-      {% if not activity %}
-        <p class="addon-search-message">{{ _('No results found.') }}</p>
-      {% else %}
-        <div class="addon-feed-wrapper">
-          <ul id="addon-feed" class="addon-events">
-            {% for event in activity.object_list %}
-              <li class="addon-event {{ event['class'] }}">
-                <span class="icon"></span>
-                <p>{{ event.notes }}</p>
-                {# TODO human readable date, e.g., "2 hours ago" #}
-                <p class="date">{{ event.created|datetime(_('%B %e, %Y, %I:%M %p')) }}</p>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
-    </div>
-    {% if activity %}
-      <div class="listing-footer">
-        {{ activity|paginator }}
-      </div>
-    {% endif %}
-  </div>
-</div>
-
-<div class="secondary sidebar" role="complementary">
-  {{ localizers_summary_sidebar() }}
-</div>
-
-{% endblock %}
-
-{% macro level_desc(level) -%}
-{% if level == 'high' %}
-  {{ _('<span class="level_hat">Above</span>95%')|safe }}
-{% elif level == 'medium' %}
-  {{ _('<span class="level_hat">Above</span>70%')|safe }}
-{% elif level == 'low' %}
-  {{ _('<span class="level_hat">Below</span>70%')|safe }}
-{% endif %}
-{%- endmacro %}
+{% endblock content %}

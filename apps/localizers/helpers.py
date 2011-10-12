@@ -1,26 +1,13 @@
 from django.conf import settings
-from django.utils import translation
 
 import jinja2
-from jingo import register, env
-import product_details
+from jingo import register
+from product_details import product_details
 
 from access import acl
-from zadmin.models import Config
 
 from . import L10N_CATEGORIES
 from .models import L10nSettings, L10nEventlog
-
-
-@register.inclusion_tag('localizers/summary_sidebar.html')
-@jinja2.contextfunction
-def localizers_summary_sidebar(context):
-    """Sidebar on the global localizer summary page."""
-    ctx = dict(context.items())
-    show_edit = acl.action_allowed(context['request'], 'Admin',
-                                   'EditAnyLocale')
-    ctx['show_edit'] = show_edit
-    return ctx
 
 
 @register.inclusion_tag('localizers/dashboard_sidebar.html')
@@ -40,8 +27,8 @@ def localizers_dashboard_sidebar(context, locale_code):
             '-created').only('notes')[:1]
         if stats_event:
             percentage = float(stats_event[0].notes)
-            upwidth = max(0, percentage-1)
-            downwidth = max(0, 100-percentage-1)
+            upwidth = max(0, percentage - 1)
+            downwidth = max(0, 100 - percentage - 1)
             lang_stats.append({
                 'category': category,
                 'name': cat_name,
@@ -50,23 +37,18 @@ def localizers_dashboard_sidebar(context, locale_code):
                 'downwidth': downwidth
             })
 
-    # Xenophobia
-    conf = Config.objects.get(pk='xenophobia')
-    xenophobia = conf.json.get(locale_code, False)
-
     ctx.update({
         'show_global_edit': show_global_edit,
         'show_local_edit': show_local_edit,
         'locale_code': locale_code,
         'lang_stats': lang_stats,
-        'xenophobia': xenophobia,
     })
     return ctx
 
 
 @register.inclusion_tag('localizers/sidebar_motd.html')
 @jinja2.contextfunction
-def localizers_sidebar_motd(context, lang='', show_edit=False, extraclass=None):
+def localizers_sidebar_motd(context, lang=''):
     """Message of the Day on localizer dashboards."""
     try:
         l10n_set = L10nSettings.objects.get(locale=lang)
@@ -76,10 +58,8 @@ def localizers_sidebar_motd(context, lang='', show_edit=False, extraclass=None):
 
     ctx = dict(context.items())
     ctx.update({
-        'show_edit': show_edit,
         'motd_lang': lang,
         'motd': motd,
-        'extraclass': extraclass
     })
     return ctx
 

@@ -99,7 +99,7 @@ AMO_LANGUAGES = (
     'af', 'ar', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'en-US', 'es-ES',
     'eu', 'fa', 'fi', 'fr', 'ga-IE', 'he', 'hu', 'id', 'it', 'ja', 'ko', 'mn',
     'nl', 'pl', 'pt-BR', 'pt-PT', 'ro', 'ru', 'sk', 'sl', 'sq', 'sv-SE',
-    'tr', 'uk', 'vi', 'zh-CN', 'zh-TW',
+    'uk', 'vi', 'zh-CN', 'zh-TW',
 )
 HIDDEN_LANGUAGES = ('cy', 'sr', 'sr-Latn', 'tr')
 
