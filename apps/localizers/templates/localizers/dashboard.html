@@ -5,38 +5,42 @@
 {{ page_title(_('Localization Summary for {0}')|f(userlang['native'])) }}
 {% endblock %}
 
+{% block bodyclass %}gutter{% endblock %}
+
 {% block content %}
 
+<header>
   {{ impala_breadcrumbs([(url('localizers.dashboard'), _('Localization Dashboard'))]) }}
 
-  {{ localizers_dashboard_sidebar(locale_code=locale_code) }}
-
-  <h2>{{ _('Localization Summary for {0}')|f(userlang.native) }}</h2>
+  <h1>{{ _('Localization Summary for {0}')|f(userlang.native) }}</h1>
 
   {{ locale_switcher(current_locale=locale_code) }}
+</header>
 
-<section class="primary">
+{{ localizers_dashboard_sidebar(locale_code=locale_code) }}
+<div class="primary c">
 
-  {% if members or team_homepage %}
-    {# L10n: {0} is a language name, e.g. 'Deutsch' #}
-    <h3>{{ _('Want to get in touch with the {0} L10n team?')|f(userlang['native']) }}</h3>
-    {% if team_homepage %}
-      <p><a href="{{ team_homepage|external_url }}" hreflang="{{ locale_code }}">
-        {# L10n: {0} is a language name, e.g. 'Deutsch' #}
-        {{ _('Visit the {0} L10n Homepage')|f(userlang['native']) }}
-      </a></p>
-    {% endif %}
-    {% if members %}
+  <section class="hero island c">
+    {% if members or team_homepage %}
       {# L10n: {0} is a language name, e.g. 'Deutsch' #}
-      <h4>{{ _('Current Localizers for {0}:')|f(userlang['native']) }}</h4>
-      <ul>
-        {% for member in members %}
-          <li>{{ member|user_link }}</li>
-        {% endfor %}
-      </ul>
+      <h2>{{ _('Want to get in touch with the {0} L10n team?')|f(userlang['native']) }}</h2>
+      {% if team_homepage %}
+        <p><a href="{{ team_homepage|external_url }}" hreflang="{{ locale_code }}">
+          {# L10n: {0} is a language name, e.g. 'Deutsch' #}
+          {{ _('Visit the {0} L10n Homepage')|f(userlang['native']) }}
+        </a></p>
+      {% endif %}
+      {% if members %}
+        {# L10n: {0} is a language name, e.g. 'Deutsch' #}
+        <h2>{{ _('Current Localizers for {0}:')|f(userlang['native']) }}</h2>
+        <ul>
+          {% for member in members %}
+            <li>{{ member|user_link }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
     {% endif %}
-  {% endif %}
-
-</section>{# /#primary #}
+  </section>
+</div>{# /#primary #}
 
 {% endblock content %}

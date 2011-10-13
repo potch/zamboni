@@ -1,13 +1,13 @@
 <section class="secondary" role="complementary">
-<div>
+<aside class="notice">
   {# L10n: Header to an info box in the sidebar #}
-  <h3>{{ _('Good to know') }}</h3>
+  <h2>{{ _('Good to know') }}</h2>
   {{ localizers_sidebar_motd(lang=locale_code) }}
   {{ localizers_sidebar_motd(lang='') }}
-</div>
+</aside>
 
 <div class="l10n_stats article">
-  <h3>{{ _('Progress Summary') }}</h3>
+  <h2>{{ _('Progress Summary') }}</h2>
   <ul>
     {% for stats in lang_stats %}
     <li>
@@ -28,15 +28,15 @@
 
 {% if show_local_edit or show_global_edit %}
 <div>
-  <h3>{{ _('Need Help?') }}</h3>
+  <h2>{{ _('Need Help?') }}</h2>
   <p>
-    <a href="http://www.mozilla.org/community/developer-forums.html#dev-l10n-web">
+    <a class="button" href="http://www.mozilla.org/community/developer-forums.html#dev-l10n-web">
       {{ _('Visit the Newsgroup') }}
     </a>
   </p>
 
   {% if members %}
-    <h4>{{ _('E-Mail Your Team:') }}</h4>
+    <h3>{{ _('E-Mail Your Team:') }}</h3>
     <ul>
       {% for member in members %}
         <li><a href="mailto:{{ member.email }}">{{ member.display_name }}</a>

@@ -2,43 +2,64 @@
 
 {% block title %}{{ page_title(_('Localizer Dashboard')) }}{% endblock %}
 
-{# TODO XXX Not doing the trick! :( #}
-{% block bodyclass %}inverse{% endblock %}
+{% block bodyclass %}gutter{% endblock %}
 
 {% block content %}
 
-  {{ impala_breadcrumbs([(url('localizers.dashboard'), _('Localization Dashboard'))]) }}
+  <header>
+    {{ impala_breadcrumbs([(url('localizers.dashboard'), _('Localization Dashboard'))]) }}
+    <h1>{{ _('Mozilla Add-ons Localization') }}</h1>
+  </header>
 
   <section class="secondary c" role="complementary">
     {# L10n: Header to an info box in the sidebar #}
-    <h3>{{ _('Good to know') }}</h3>
-    {{ localizers_sidebar_motd(lang='') }}
-
-    <h3>{{ _('Want to help?') }}</h3>
-    <p>{{ _('AMO is available in so many languages because of people like '
-            'you helping out!') }}</p>
-    <ul>
-      <li><a href="https://wiki.mozilla.org/AMO:Localizers">{{ _('Get started with AMO L10n') }}</a></li>
-      {# L10n: %1$s is a URL #}
-      <li>{{ _('Want the bigger picture? Visit <a href="{0}">'
-               'localize.mozilla.org</a>.')|f('http://localize.mozilla.org')|safe }}</li>
-    </ul>
+    <aside class="notice">
+      <h2>{{ _('Good to know') }}</h2>
+      {{ localizers_sidebar_motd(lang='') }}
+    </aside>
+    <h2>{{ _('Want the bigger picture?') }}</h2>
+    <a class="button" href="http://localize.mozilla.org">
+      {{ ('Visit localize.mozilla.org') }}
+    </a>
   </section>
 
-  <section class="primary">
-    <h2>{{ _('Mozilla Add-ons Localization') }}</h2>
-      <ul>
-      {% for lang in amo_languages: %}
-        <li>
-          {% with hidden_options = ' class="disabled" title="{0}"'|f(_('This locale is hidden.')) %}
-          <a href="{{ url('localizers.locale_dashboard', lang) }}"
-                   {{ hidden_options|safe if locale in hidden_languages }}>
-            {{ languages[lang]['native'] }}
-          {% endwith %}
-          </a>
-        </li>
-      {% endfor %}
-      </ul>
-  </section>
+  <div class="primary c">
+    <section class="notice">
+      <h2>{{ _('Want to help?') }}</h2>
+      <p>{{ _('AMO is available in so many languages thanks to the help of people like you!') }}</p>
+      <p><a class="button" href="https://wiki.mozilla.org/AMO:Localizers">
+        {{ _('Get started with AMO L10n') }}
+      </a></p>
+    </section>
+    <section class="island hero c">
+      <h2>{{ _('Existing AMO locales') }}</h2>
+      <table style="width:100%">
+        <thead>
+          <tr>
+            <th>{{ ('Locale code') }}</th>
+            <th colspan=2>{{ ('Locale name') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for lang in amo_languages: %}
+          <tr>
+            <td>{{ lang }}</td>
+            <td>
+              {% with hidden_options = ' class="disabled" title="{0}"'|f(_('This locale is hidden.')) %}
+              <a href="{{ url('localizers.locale_dashboard', lang) }}"
+                       {{ hidden_options|safe if locale in hidden_languages }}>
+                {{ languages[lang]['native'] }}
+              {% endwith %}
+              </a>
+            </td>
+            <td>
+              {{ languages[lang]['English'] }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table
+    </section>
+  </div>
 
 {% endblock content %}
