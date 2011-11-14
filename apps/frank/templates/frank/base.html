@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC himom>
+<html lang="{{ LANG }}" dir="{{ DIR }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %} {{ _('Firefox Market')}} {% endblock %}</title>
+
+    {% block site_css %}
+      {{ css('frank/main') }}
+    {% endblock %}
+  </head>
+  <body>
+    <header id="header-top">
+      <section>
+        <div id="global-header-tab">
+          <a href="http://mozilla.org/"><img src="{{ media('img/zamboni/mozilla-tab.png') }}"></a>
+        </div>
+        <h1>
+          {{ _('<b>Firefox</b> Market') }}
+        </h1>
+      </section>
+    </header>
+  </body>
+</html>

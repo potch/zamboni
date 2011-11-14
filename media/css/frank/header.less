@@ -1,0 +1,27 @@
+@import '../impala/lib';
+@import 'frank';
+
+body {
+  color: #333;
+}
+
+#header-top {
+  border-top: 2px solid #686868;
+  background: #eee;
+  height: 42px;
+  padding: 0 20px;
+  .box-shadow(0 -1px fadeOut(#fff,50%) inset);
+  line-height: 38px;
+  h1 {
+    font-family: @meta;
+    font-size: 28px;
+    font-weight: normal;
+    b {
+      font-weight: bold;
+    }
+  }
+}
+
+#global-header-tab {
+  float: right;
+}

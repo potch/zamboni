@@ -429,6 +429,12 @@ DOMAIN_METHODS = {
 # and js files that can be bundled together by the minify app.
 MINIFY_BUNDLES = {
     'css': {
+        'frank/main': (
+            'css/impala/base.css',
+            'css/global/headerfooter.css',
+            'css/frank/metrics.less',
+            'css/frank/header.less',
+        ),
         # CSS files common to the entire site.
         'zamboni/css': (
             'css/legacy/main.css',

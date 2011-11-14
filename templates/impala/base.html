@@ -5,6 +5,8 @@
     {% if not settings.ENGAGE_ROBOTS %}
       <meta name="robots" content="noindex">
     {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     {% block extrameta %}{% endblock %}
     <title>{% block title %}{% if settings.APP_PREVIEW %}Apps Developer Preview{% else %}{{ _('Mozilla Add-ons') }}{% endif %}{% endblock %}</title>
 
