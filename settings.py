@@ -434,6 +434,7 @@ MINIFY_BUNDLES = {
             'css/global/headerfooter.css',
             'css/frank/metrics.less',
             'css/frank/header.less',
+            'css/frank/tile-grid.less',
         ),
         # CSS files common to the entire site.
         'zamboni/css': (
@@ -546,6 +547,14 @@ MINIFY_BUNDLES = {
         ),
     },
     'js': {
+        'frank': (
+            'js/lib/jquery-1.7.1.js',
+            'js/lib/underscore.js',
+            'js/lib/backbone.js',
+            'js/frank/init.js',
+            'js/frank/models/addon.js',
+            'js/frank/app.js',
+        ),
         # JS files common to the entire site (pre-impala).
         'common': (
             'js/lib/jquery-1.6.4.js',

@@ -7,12 +7,18 @@
  * "1"
  */
 var format = (function() {
-    var re = /\{([^}]+)\}/g;
+    var re = /\{([^}|]+)\|?([^}|]+)\}/g,
+        filters = {
+            'floor' : Math.floor,
+            'numberfmt' : function(s) { return s; }
+        };
     return function(s, args) {
         if (!args) return;
         if (!(args instanceof Array || args instanceof Object))
             args = Array.prototype.slice.call(arguments, 1);
-        return s.replace(re, function(_, match){ return args[match]; });
+        return s.replace(re, function(_, match, filter){
+            return filters[filter] ? filters[filter](args[match]) : args[match];
+        });
     };
 })();
 function template(s) {

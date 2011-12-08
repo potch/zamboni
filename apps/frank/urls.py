@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = patterns('',
     url('^$', views.home, name='frank.home'),
+    url('^addons/popular$', views.popular, name='frank.popular'),
 )
