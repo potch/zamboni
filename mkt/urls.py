@@ -11,6 +11,7 @@ from apps.users.urls import (detail_patterns as user_detail_patterns,
 from mkt.account.urls import (purchases_patterns, settings_patterns,
                               users_patterns as mkt_users_patterns)
 from mkt.developers.views import login
+from mkt.inapp_pay.views import mozmarket_lib
 
 
 admin.autodiscover()
