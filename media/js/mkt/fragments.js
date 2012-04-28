@@ -1,5 +1,5 @@
 
-//lololol
+//lolololol
 (function(page) {
     var threshold = 250,
         timeout = false;
