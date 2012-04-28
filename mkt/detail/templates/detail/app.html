@@ -158,6 +158,12 @@
           <a href="#" class="next-page"></a>
         </div>
         <ul class="content">
+          <li>
+            <a class="screenshot thumbnail video"
+               href="https://videos-cdn.mozilla.net/addons/vuue2y.webm" title="Monkey.">
+              <em><span><img src=""></span></em>
+            </a>
+          </li>
           {%- for preview in product.all_previews -%}
             <li>
               <a class="screenshot thumbnail{{ ' video' if preview.filetype == 'video/webm' }}"
