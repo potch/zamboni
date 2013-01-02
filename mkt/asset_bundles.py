@@ -298,6 +298,7 @@ JS = {
 
         # Account settings.
         'js/mkt/account.js',
+        'js/mkt/feedback.js',
 
         # Homepage.
         'js/mkt/home.js',
