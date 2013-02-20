@@ -3,6 +3,12 @@
     var sliderTemplate = getTemplate($('#preview-tray'));
     var previewTemplate = getTemplate($('#single-preview'));
 
+    var thumbUrlTemplate = $('body').data('thumbs-url');
+    var thumb = template(thumbUrlTemplate);
+
+    var fullUrlTemplate = $('body').data('full-url');
+    var full = template(fullUrlTemplate);
+
     // magic numbers!
     var THUMB_WIDTH = 180;
     var THUMB_PADDED = 195;
@@ -30,6 +36,8 @@
          if (!product.previews) return;
         _.each(product.previews, function(p) {
             p.typeclass = (p.type === 'video/webm') ? 'video' : 'img';
+            p.thumbUrl = thumb([~~(p.id/1000), p.id, p.modified]);
+            p.fullUrl = full([~~(p.id/1000), p.id, p.modified]);
             previewsHTML += previewTemplate(p);
         });
 

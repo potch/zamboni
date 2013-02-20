@@ -1918,6 +1918,14 @@ class Preview(amo.models.ModelBase):
         return d
 
     @property
+    def modified_timestamp(self):
+        if self.modified is not None:
+            modified = int(time.mktime(self.modified.timetuple()))
+        else:
+            modified = 0
+        return modified
+
+    @property
     def file_extension(self):
         # Assume that blank is an image.
         if not self.filetype:

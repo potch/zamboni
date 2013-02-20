@@ -56,6 +56,8 @@
         data-user="{{ user_data(request.amo_user)|json }}"
         data-readonly="{{ settings.READ_ONLY|json }}"
         data-media-url="{{ MEDIA_URL }}"
+        data-thumbs-url="{{ settings.PREVIEW_THUMBNAIL_URL|formatify }}"
+        data-full-url="{{ settings.PREVIEW_FULL_URL|formatify }}"
         data-login-url="{{ url('users.browserid_login') }}"
         data-persona-url="{{ settings.BROWSERID_JS_URL }}"
         data-native-persona-url="{{ settings.NATIVE_BROWSERID_JS_URL }}"

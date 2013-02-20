@@ -1,4 +1,6 @@
+import itertools
 import json
+import re
 
 from django.conf import settings
 
@@ -144,9 +146,9 @@ def product_as_dict(request, product, purchased=None, receipt_type=None,
         previews = []
         for p in product.all_previews:
             preview = {
-                'fullUrl': jinja2.escape(p.image_url),
+                'id': p.id,
                 'type': jinja2.escape(p.filetype),
-                'thumbUrl': jinja2.escape(p.thumbnail_url),
+                'modified': p.modified_timestamp,
                 'caption': jinja2.escape(p.caption) if p.caption else ''
             }
             previews.append(preview)
@@ -441,6 +443,12 @@ def _check_firefox(ua):
                     need_upgrade = vint(v) < min_version
 
     return {'need_firefox': need_firefox, 'need_upgrade': need_upgrade}
+
+
+@register.filter
+def formatify(s):
+    count = itertools.count()
+    return re.sub('(?<!%)%[sd]', lambda _: '{%d}' % count.next(), s)
 
 
 @register.filter
